@@ -1,0 +1,14 @@
+{
+  "id": "invalid id",
+  "required": "this field is required",
+  "not-found": "Data not-found",
+  "duplicated": "Data is already founded",
+  "sm-length": "name should be between 2 and 15 letter",
+  "lg-length": "name should be between 2 and 300 letter",
+  "update-product-subcategory-error": "subcategory doesn't exist in this category",
+  "price": "price should be number and more than 0",
+  "quantity": "quantity should be number and more than 0",
+  "discount": "discount should be number and more than 0",
+  "invalid": "invalid value",
+  "file-type": "the file type is not allowed"
+}
