@@ -1,0 +1,26 @@
+{
+  "id": "invalid id",
+  "required": "this field is required",
+  "not-found": "Data not-found",
+  "duplicated": "Data is already founded",
+  "sm-length": "name should be between 2 and 15 letter",
+  "lg-length": "name should be between 2 and 300 letter",
+  "update-product-subcategory-error": "subcategory doesn't exist in this category",
+  "price": "price should be number and more than 0",
+  "quantity": "quantity should be number and more than 0",
+  "discount": "discount should be number and more than 0",
+  "invalid": "invalid value",
+  "file-type": "the file type is not allowed",
+
+  "________________________________________________________": "Auth",
+  "invalid-email-password": "uncorrect email or password",
+  "duplicated-user": "username or email is already used by another person",
+  "invalid-email": "uncorrect email",
+  "invalid-user": "user not-found",
+  "invalid-password": "password should be between 6 and 20 char",
+  "password-typical": "confirmpassword doesn't match password",
+  "new-password": "enter a new password",
+  "please-login": "please login",
+  "account-activate": "your account isn't active",
+  "account-permission": "you don't have permission to do this action"
+}
