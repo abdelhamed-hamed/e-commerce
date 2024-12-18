@@ -7,6 +7,12 @@ import authService from "../auth/auth.service";
 
 const usersRoute: Router = Router();
 
+usersRoute.use(
+  authService.protectedRoute,
+  authService.checkActive,
+  authService.allowedTo("admin")
+);
+
 usersRoute
   .route("/")
   .get(usersService.getAll)

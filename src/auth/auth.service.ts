@@ -6,6 +6,7 @@ import expressAsyncHandler from "express-async-handler";
 import usersSchema from "../users/users.schema";
 import ApiErrors from "../utils/api-errors";
 import tokens from "../utils/creatToken";
+import sanitization from "../utils/sanitization";
 
 class AuthService {
   login = expressAsyncHandler(
@@ -26,7 +27,28 @@ class AuthService {
       // لو نجح ف الاختبار اعمل لليوزر ده توكن
       const token = tokens.creatToken(user._id, user.role);
 
-      res.status(200).json({ token, data: user });
+      res.status(200).json({ token, data: sanitization.User(user) });
+    }
+  );
+
+  adminLogin = expressAsyncHandler(
+    async (req: Request, res: Response, next: NextFunction) => {
+      const findAdmin = {
+        $or: [{ username: req.body.username }, { email: req.body.email }],
+        role: { $in: ["admin", "employee"] },
+      };
+
+      const user = await usersSchema.findOne(findAdmin);
+
+      if (
+        !user ||
+        user.hasPassword == false ||
+        !(await bcrypt.compare(req.body.password, user.password))
+      )
+        return next(new ApiErrors(`${req.__("account-permission")}`, 400));
+
+      const token = tokens.creatToken(user._id, user.role);
+      res.status(200).json({ token, data: sanitization.User(user) });
     }
   );
 
@@ -43,7 +65,7 @@ class AuthService {
 
       const token = tokens.creatToken(newUser._id, newUser.role);
 
-      res.status(201).json({ token, data: newUser });
+      res.status(201).json({ token, data: sanitization.User(newUser) });
       next();
     }
   );
