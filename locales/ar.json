@@ -19,6 +19,8 @@
   "invalid-password": "كلمة السر يجب ان تكون بين 6 او 20 حرف",
   "password-typical": "كلمة السر غير كتطابقة",
   "new-password": "ادخل كلمة المرور الجديدة",
+  "old-password": "الباسورد الحالي ليس صحيح",
+  "new-password-typically-old": "ادخل باسوورد جديد مختلفه عن القديمة",
   "please-login": "من فضلك قم بتسجيل الدخول",
   "account-activate": "حسابك غير مفعل",
   "account-permission": "ليس لديك الصلاحيات لفعل ذلك"

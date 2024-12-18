@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import expressAsyncHandler from "express-async-handler";
 import ApiErrors from "../utils/api-errors";
 import Features from "../utils/features";
+import sanitization from "../utils/sanitization";
 // Service for Categories CRUD operations
 class CrudService {
   // Get all
@@ -42,12 +43,16 @@ class CrudService {
     });
 
   // Get One
-  getOne = <T>(scheme: mongoose.Model<any>) =>
+  // فايدة الموديل نيم عشان خاطر لو عامل يوزر  في ال جيت ميرجعوش بالداتا الحساسه واعمله سنتيزيشن الاول
+  getOne = <T>(scheme: mongoose.Model<any>, modelName?: string) =>
     expressAsyncHandler(
       async (req: Request, res: Response, next: NextFunction) => {
         // request from the database
-        const document: T | null = await scheme.findById(req.params.id);
+        let document: any = await scheme.findById(req.params.id);
         if (!document) return next(new ApiErrors(req.__("not-found"), 404));
+
+        // هنا بقوله لو ال جايلك حاجه بروفايل اعملي سنتيزيشن للداتا
+        if (modelName == "users") document = sanitization.User(document);
         res.status(200).json({ data: document });
       }
     );

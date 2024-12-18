@@ -20,6 +20,8 @@
   "invalid-password": "password should be between 6 and 20 char",
   "password-typical": "confirmpassword doesn't match password",
   "new-password": "enter a new password",
+  "old-password": "old password isn't correct",
+  "new-password-typically-old": "Enter a different password than the old password",
   "please-login": "please login",
   "account-activate": "your account isn't active",
   "account-permission": "you don't have permission to do this action"

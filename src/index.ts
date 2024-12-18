@@ -8,6 +8,7 @@ import productsRoute from "./products/products.route";
 import usersRoute from "./users/users.route";
 import authRoute from "./auth/auth.route";
 import { Users } from "./users/users.interface";
+import profileRoute from "./profile/profile.route";
 
 // Edit Express Request
 declare module "express" {
@@ -24,6 +25,7 @@ const mainRoutes = (app: express.Application) => {
   app.use("/api/v1/products", productsRoute);
   app.use("/api/v1/users", usersRoute);
   app.use("/api/v1/auth", authRoute);
+  app.use("/api/v1/profile", profileRoute);
 
   //  Handle Routes Error
   app.all(
